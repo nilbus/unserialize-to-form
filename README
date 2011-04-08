@@ -1,0 +1,8 @@
+Simple jQuery plugin to unserialize data back into DOM forms.
+
+Usage:
+
+	var s = $("form").serialize(); // save form settings
+	$("form").unserializeForm(s);  // restore form settings
+
+The serialized form data could be saved in a session, perhaps in HTML5 sessionstorage.
