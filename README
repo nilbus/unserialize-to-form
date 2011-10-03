@@ -9,6 +9,11 @@ The serialized form data could be saved in a session, perhaps in HTML5 sessionst
 Note that saving the serialized data to a cookie is troublesome as not all browsers
 implement the same cookie string lengths, so sessionstorage or a SQL db is recommended.
 
+Known issues:
+
+  * Radio buttons are not handled correctly.
+  * No functionality to handle dynamically-built forms
+
 Special thanks / Contributors:
   Anton
   Thiago Macedo
