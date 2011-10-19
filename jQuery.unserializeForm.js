@@ -58,10 +58,24 @@
 })(jQuery);
 
 function _unserializeFormSetValue(el, _value) {
-	if($(el).attr("type") == "checkbox") {
-		$(el).attr("checked", true);
+	if($(el).length > 1) {
+		// Assume multiple elements of the same name are radio buttons
+		$.each(el, function(i) {
+			if($(this).prop("value") == _value) {
+				// Check it
+				$(this).prop("checked", true);
+			} else {
+				// Uncheck it
+				$(this).prop("checked", false);
+			}
+		});
 	} else {
-		$(el).val(_value);
+		// Assume, if only a single element, it is not a radio button
+		if($(el).attr("type") == "checkbox") {
+			$(el).attr("checked", true);
+		} else {
+			$(el).val(_value);
+		}
 	}
 }
 
@@ -73,3 +87,4 @@ function _unserializeFormSetValue(el, _value) {
 //                                    * Fixed unescaping issue for certain encoding elements (@)
 //                                    * Traverse saved elements instead of the form when unserializing
 //                                    * Provide optional callback for building dynamic forms
+//                                    * Fixed issue setting radio buttons
