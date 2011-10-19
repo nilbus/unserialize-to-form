@@ -9,6 +9,14 @@
 // Usage: var s = $("form").serialize(); // save form settings
 //        $("form").unserializeForm(s);  // restore form settings
 
+//        Alternatively, you can provide a second parameter to unserializeForm,
+//        a callback which takes the element and the value, allowing you to build
+//        dynamic forms via callback. If you return false, unserializeForm will
+//        try to find and set the DOM element, otherwise, (on true) it assumes you've
+//        handled that attribute and moves onto the next. E.g.:
+//
+//               var callback = function(el, val) { $(el).val(val); };
+
 // See ChangeLog at end of file for history.
 
 (function($) {
