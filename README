@@ -1,18 +1,29 @@
-Simple jQuery plugin to unserialize data back into DOM forms.
+Simple jQuery plugin to unserialize data back into forms.
 
 Usage:
 
 	var s = $("form").serialize(); // save form settings.
 	$("form").unserializeForm(s);  // restore form settings
 
-The serialized form data could be saved in a session, perhaps in HTML5 sessionstorage.
+The serialized form data could be saved in a session, perhaps in HTML5 sessionStorage.
 Note that saving the serialized data to a cookie is troublesome as not all browsers
-implement the same cookie string lengths, so sessionstorage or a SQL db is recommended.
+implement the same cookie string lengths, so sessionStorage or a SQL db is recommended.
+
+Optionally, a second parameter may be passed to unserializeForm to provide a callback:
+
+	var cb = function(element, value) { return true; // or false }
+
+The callback will be given the name of the element to create and the value to set it to.
+If the callback returns true, unserializeForm moves onto the next element, assuming the
+callback handled the unserializing process, but if the callback returns false, it will
+attempt to find and set the value of the element.
+
+The purpose of this callback is to allow for the creation of dynamic forms. Again, it is
+optional and may be ignored.
 
 Known issues:
 
-  * Radio buttons are not handled correctly.
-  * No functionality to handle dynamically-built forms
+  * None.
 
 Special thanks / Contributors:
   Anton
