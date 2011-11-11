@@ -42,7 +42,7 @@
 		_values = serialized_values;
 		
 		// Start with all checkboxes and radios unchecked, since an unchecked box will not show up in the serialized form
-		$(this).find(":checked").prop("checked", false);
+		$(this).find(":checked").attr("checked", false);
 		
 		// Iterate through each saved element and set the corresponding element
 		for(var key in _values) {
@@ -72,12 +72,12 @@ function _unserializeFormSetValue(el, _value) {
 	if($(el).length > 1) {
 		// Assume multiple elements of the same name are radio buttons
 		$.each(el, function(i) {
-			if($(this).prop("value") == _value) {
+			if($(this).attr("value") == _value) {
 				// Check it
-				$(this).prop("checked", true);
+				$(this).attr("checked", true);
 			} else {
 				// Uncheck it
-				$(this).prop("checked", false);
+				$(this).attr("checked", false);
 			}
 		});
 	} else {
