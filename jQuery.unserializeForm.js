@@ -41,6 +41,9 @@
 		// _values is now a proper array with values[hash_index] = associated_value
 		_values = serialized_values;
 		
+		// Start with all checkboxes and radios unchecked, since an unchecked box will not show up in the serialized form
+		$(this).find(":checked").prop("checked", false);
+		
 		// Iterate through each saved element and set the corresponding element
 		for(var key in _values) {
 			var el = $(this).add("input,select,textarea").find("[name=\"" + unescape(key) + "\"]");
